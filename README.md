@@ -7,7 +7,9 @@ On your Linux machine or in the Vagrant file attached use the following commands
 ```sudo apt-get install -y wget```
 ```wget -O - https://bit.ly/docker-install | bash```
 
-``` sudo docker run --rm -v $(pwd)/data:/data/db --name dbms --publish=27018:27017 -d mongo:latest```
+```sudo docker run --rm -v $(pwd)/data:/data/db --name dbms --publish=27018:27017 -d mongo:latest```
+```sudo docker run -it --link dbms:mongo --rm mongo sh -c 'exec mongo "$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/test"'
+```
 
 ###In the database server:
 
@@ -28,9 +30,10 @@ On your Linux machine or in the Vagrant file attached use the following commands
 ```mongoimport --drop --db tweets --collection tweets --type csv --headerline --file training.1600000.processed.noemoticon.csv```
 
 
-Exit database server
-by 
+Exit database server by 
 ```exit```
+You can always enter again with this one but don't do that now.
+```docker exec -it dbms bash```
 ```sudo apt-get update```
 ```apt-get install apache2```
 ```apt-get -y install php7.0 libapache2-mod-php7.0 php7.0-mcrypt```
