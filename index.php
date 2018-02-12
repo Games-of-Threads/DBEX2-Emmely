@@ -168,8 +168,8 @@ if ($_POST['query'] != 0){
 			'aggregate' => 'tweets',
 			'pipeline' => [
 				['$match' => ['text' => ['$regex' => $reg, '$options' => 'g']]],
-				['$group' => ['_id' => '$user', 'emotion' => ['$avg' => '$polarity']]],
-				['$sort' => ['emotion' => $mood]],
+				['$group' => ['_id' => '$user', 'emotion' => ['$avg' => '$polarity'], 'total' => ['$sum' => 1]]],
+				['$sort' => ['emotion' => $mood, 'total' => -1]],
 				['$limit' => 5],
 			],
 			'cursor' => new stdClass,
