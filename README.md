@@ -23,7 +23,6 @@ Run the vagrant file in you bash terminal with
 
 Install Docker:
 
-Run this command:
 
 ```sudo apt-get install -y git```
 
@@ -60,11 +59,10 @@ In the docker container import the data into a database/collection called tweets
 ```mongoimport --drop --db tweets --collection tweets --type csv --headerline --file training.1600000.processed.noemoticon.csv```
 
 
-The docker container is now prepared. Exit database server by 
+The docker container is now prepared. Exit the docker cotainer by 
 
 ```exit```
 
-Set up Apache and PHP7 to runt the program 
 
 You can always enter again with this one but don't do that now.
 
@@ -117,7 +115,7 @@ You should be able to see the application by navigating to the IP address of you
 
 ## Use the application
 [My set up on Digital Ocean](http://128.199.43.226/DBEX2-Emmely/index.php)
-I use Digital ocean Ubuntu machine 1GB and follow the guide above.
+I have set up a Digital Ocean Ubuntu machine 1GB by following the guide above.
 ## My results of the queries
 
 [![https://gyazo.com/8295c229c0a43150d61d4e19f7198073](https://i.gyazo.com/8295c229c0a43150d61d4e19f7198073.png)](https://gyazo.com/8295c229c0a43150d61d4e19f7198073)
