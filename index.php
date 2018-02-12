@@ -135,7 +135,7 @@ if ($_POST['query'] != 0){
 				['$project' => ['mentions' =>['$arrayElemAt' => [['$split' => ['$text', ' ']], 0]]]],
 				['$group' => ['_id' => '$mentions', 'value' => ['$sum' => 1]]],
 				['$sort' => ['value' => -1]],
-				['$limit' => 10],
+				['$limit' => 5],
 			],
 			'cursor' => new stdClass,
 		]);
