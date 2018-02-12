@@ -69,7 +69,7 @@ You can always enter again with this one but don't do that now.
 ```docker exec -it dbms bash```
 
 
-#### Install Apache/PHP7:
+#### Install Apache/PHP7 on your Ubuntu/Linux machine:
 
 ```sudo apt-get update```
 
