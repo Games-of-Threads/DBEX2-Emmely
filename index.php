@@ -21,7 +21,7 @@
 	
 	
 ​
-<form action="test.php" method="post">
+<form action="index.php" method="post">
 	<div class="col-12" style="border:1px solid #CCC">
 		<!--Radio group-->
 		<div class="form-group ">
