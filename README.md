@@ -94,9 +94,9 @@ You should be able to see some PHP information by navigating to the IP address o
 ```pecl channel-update pecl.php.net```
 
 
-```echo "extension=mongodb.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"```
-
 ```sudo pecl install -f mongodb-1.4.0```
+
+```echo "extension=mongodb.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"```
 
 
 ```systemctl restart apache2```
