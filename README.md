@@ -62,8 +62,7 @@ I use Digital ocean Ubuntu machine 1GB and follow the guide above.
 
 [![https://gyazo.com/d6dbb434b3fc4233c0d2bb0b3f93e6c3](https://i.gyazo.com/d6dbb434b3fc4233c0d2bb0b3f93e6c3.png)](https://gyazo.com/d6dbb434b3fc4233c0d2bb0b3f93e6c3)
 	
-[![https://gyazo.com/f0ed75f9049f7af216782d2aa6a4ce54](https://i.gyazo.com/f0ed75f9049f7af216782d2aa6a4ce54.png)](https://gyazo.com/f0ed75f9049f7af216782d2aa6a4ce54)
-
+[![https://gyazo.com/2d064811e79c3a49720e81124d8a9a62](https://i.gyazo.com/2d064811e79c3a49720e81124d8a9a62.png)](https://gyazo.com/2d064811e79c3a49720e81124d8a9a62)
 
 [![https://gyazo.com/cb4fc6f5f73fd388e2b9f0cc857a40df](https://i.gyazo.com/cb4fc6f5f73fd388e2b9f0cc857a40df.png)](https://gyazo.com/cb4fc6f5f73fd388e2b9f0cc857a40df)
 
