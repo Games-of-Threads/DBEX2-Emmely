@@ -31,7 +31,7 @@ Install Docker:
 ```wget -O - https://bit.ly/docker-install | bash```
 
 
-#### Set up the Docker conatiner with MongoDB:
+#### Set up the Docker container with MongoDB:
 
 Set up the MongoDB (same as we did during the lecture):
 
