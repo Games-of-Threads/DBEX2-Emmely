@@ -5,32 +5,38 @@ I have created a small Database Application in a PHP file called index.php.
 
 It connects and execute queries from a MongoDB database running in a container on the same server as the PHP file. The docker container is same as used in the lecture ( note I made a small change to the port number).
 
-I have set up the solution on a Digital Ocean Machine where you can execute the result and add your own text to match the mood queries [test the application here](http://128.199.43.226/DBEX2-Emmely/index.php).
+I have set up the solution on a Digital Ocean Machine where you can execute the queries and get the result also by adding your own text to match the mood queries [test the application here](http://128.199.43.226/DBEX2-Emmely/index.php).
 
 ## Instructions to set up the solution on a Linux/Ubuntu Machine
 ### Requirement
 
-A Linux/Ubuntu machine
-Set up a Linux/Ubuntu Machine with docker installed. I have attached the Vagrant file I use for development.
+A Linux/Ubuntu machine with docker installed. 
 
+### Set up a Ubuntu/Linux environment 
+
+I have attached the Vagrant file I use for development or if you want to create droplet in Digital Ocean (also works with these instructions).
 Run the vagrant file in you bash terminal with
+
 ```vagrant up```
+
 ```vagrant ssh```
 
-On your Linux Machine or in the Vagrant file attached use the following commands to set up the MongoDB, install PHP7 and Mongdb driver for PHP:
+Install Docker:
 
-First make docker is installed or run this command:
+Run this command:
+
 ```sudo apt-get install -y git```
 ```sudo apt-get install -y wget```
 ```wget -O - https://bit.ly/docker-install | bash```
 
+#### Set up the Docker conatiner with MongoDB:
 
 Set up the MongoDB (same as we did during the lecture):
 
 ```sudo docker run --rm -v $(pwd)/data:/data/db --name dbms --publish=27018:27017 -d mongo:latest```
 ```sudo docker run -it --link dbms:mongo --rm mongo sh -c 'exec mongo "$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/test"'```
 
-### In the MongoDB docker container run the following commands:
+#### Import the data from CSV to MongoDB:
 
 In the docker container import the data into a database/collection called tweets/tweets.
 
@@ -59,11 +65,19 @@ Set up Apache and PHP7 to runt the program
 You can always enter again with this one but don't do that now.
 
 ```docker exec -it dbms bash```
+
+
+#### Install Apache/PHP7 and the MongoDB Driver for PHP:
+
 ```sudo apt-get update```
+
 ```apt-get install apache2```
+
 ```apt-get -y install php7.0 libapache2-mod-php7.0 php7.0-mcrypt```
+
 ```systemctl restart apache2```
 
+You should be able to see some PHP information by navigating to the IP address of you machine.
 
 ```sudo apt-get install php-pear```
 
@@ -78,6 +92,21 @@ You can always enter again with this one but don't do that now.
 ```echo "extension=mongodb.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"```
 
 ```sudo pecl install -f mongodb-1.4.0```
+
+
+```systemctl restart apache2```
+
+
+#### Clone the application from git
+
+``` cd /var/www/html ```
+
+``` git clone https://github.com/Games-of-Threads/DBEX2-Emmely.git ```
+
+``` cd DBEX2-Emmely```
+
+You should be able to see some PHP information by navigating to the IP address of you machine /DBEX2-Emmely.
+
 
 ## Use the application
 [My set up on Digital Ocean](http://128.199.43.226/DBEX2-Emmely/index.php)
