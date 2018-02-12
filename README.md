@@ -26,8 +26,11 @@ Install Docker:
 Run this command:
 
 ```sudo apt-get install -y git```
+
 ```sudo apt-get install -y wget```
+
 ```wget -O - https://bit.ly/docker-install | bash```
+
 
 #### Set up the Docker conatiner with MongoDB:
 
@@ -45,6 +48,7 @@ In the docker container import the data into a database/collection called tweets
 ```apt-get install -y wget```
 
 ```apt-get install -y unzip```
+
 ```wget http://cs.stanford.edu/people/alecmgo/trainingandtestdata.zip```
 
 ```unzip trainingandtestdata.zip```
@@ -67,7 +71,7 @@ You can always enter again with this one but don't do that now.
 ```docker exec -it dbms bash```
 
 
-#### Install Apache/PHP7 and the MongoDB Driver for PHP:
+#### Install Apache/PHP7:
 
 ```sudo apt-get update```
 
@@ -78,6 +82,9 @@ You can always enter again with this one but don't do that now.
 ```systemctl restart apache2```
 
 You should be able to see some PHP information by navigating to the IP address of you machine.
+
+#### Install MongoDB Driver for PHP:
+
 
 ```sudo apt-get install php-pear```
 
@@ -97,7 +104,7 @@ You should be able to see some PHP information by navigating to the IP address o
 ```systemctl restart apache2```
 
 
-#### Clone the application from git
+#### Clone the application from GitHub
 
 ``` cd /var/www/html ```
 
@@ -105,7 +112,7 @@ You should be able to see some PHP information by navigating to the IP address o
 
 ``` cd DBEX2-Emmely```
 
-You should be able to see some PHP information by navigating to the IP address of you machine /DBEX2-Emmely.
+You should be able to see the application by navigating to the IP address of you machine /DBEX2-Emmely.
 
 
 ## Use the application
