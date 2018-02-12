@@ -1,18 +1,38 @@
 # DBEX2-Emmely
 Emmely Lundberg cph-el69
 
-On your Linux machine or in the Vagrant file attached use the following commands to set up the MongoDB, install PHP7 and Mongdb driver for PHP:
+I have created a small Database Application in a PHP file called index.php. 
 
+It connects and execute queries from a MongoDB database running in a container on the same server as the PHP file. The docker container is same as used in the lecture ( note I made a small change to the port number).
+
+I have set up the solution on a Digital Ocean Machine where you can execute the result and add your own text to match the mood queries [test the application here](http://128.199.43.226/DBEX2-Emmely/index.php).
+
+## Instructions to set up the solution on a Linux/Ubuntu Machine
+### Requirement
+
+A Linux/Ubuntu machine
+Set up a Linux/Ubuntu Machine with docker installed. I have attached the Vagrant file I use for development.
+
+Run the vagrant file in you bash terminal with
+```vagrant up```
+```vagrant ssh```
+
+On your Linux Machine or in the Vagrant file attached use the following commands to set up the MongoDB, install PHP7 and Mongdb driver for PHP:
+
+First make docker is installed or run this command:
 ```sudo apt-get install -y git```
 ```sudo apt-get install -y wget```
 ```wget -O - https://bit.ly/docker-install | bash```
 
+
+Set up the MongoDB (same as we did during the lecture):
+
 ```sudo docker run --rm -v $(pwd)/data:/data/db --name dbms --publish=27018:27017 -d mongo:latest```
-```sudo docker run -it --link dbms:mongo --rm mongo sh -c 'exec mongo "$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/test"'
-```
+```sudo docker run -it --link dbms:mongo --rm mongo sh -c 'exec mongo "$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/test"'```
 
-###In the database server:
+### In the MongoDB docker container run the following commands:
 
+In the docker container import the data into a database/collection called tweets/tweets.
 
 ```apt-get update```
 
@@ -30,9 +50,14 @@ On your Linux machine or in the Vagrant file attached use the following commands
 ```mongoimport --drop --db tweets --collection tweets --type csv --headerline --file training.1600000.processed.noemoticon.csv```
 
 
-Exit database server by 
+The docker container is now prepared. Exit database server by 
+
 ```exit```
+
+Set up Apache and PHP7 to runt the program 
+
 You can always enter again with this one but don't do that now.
+
 ```docker exec -it dbms bash```
 ```sudo apt-get update```
 ```apt-get install apache2```
@@ -55,9 +80,10 @@ You can always enter again with this one but don't do that now.
 ```sudo pecl install -f mongodb-1.4.0```
 
 ## Use the application
-[My set up on Dgital ocean](http://128.199.43.226/DBEX2-Emmely/index.php)
+[My set up on Digital Ocean](http://128.199.43.226/DBEX2-Emmely/index.php)
 I use Digital ocean Ubuntu machine 1GB and follow the guide above.
-## Result
+## My results of the queries
+
 [![https://gyazo.com/8295c229c0a43150d61d4e19f7198073](https://i.gyazo.com/8295c229c0a43150d61d4e19f7198073.png)](https://gyazo.com/8295c229c0a43150d61d4e19f7198073)
 
 [![https://gyazo.com/d6dbb434b3fc4233c0d2bb0b3f93e6c3](https://i.gyazo.com/d6dbb434b3fc4233c0d2bb0b3f93e6c3.png)](https://gyazo.com/d6dbb434b3fc4233c0d2bb0b3f93e6c3)
