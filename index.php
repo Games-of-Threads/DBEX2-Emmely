@@ -58,11 +58,11 @@
 		</div>
 		<p>Mood:</br>
 			<div class="form-group">
-				<input type="radio" name="mood" value="1" checked="checked" />
+				<input type="radio" name="mood" value="0" checked="checked" />
 				<label for="radio102">Negative</label>
 			</div>
 			<div class="form-group">
-				<input type="radio" name="mood" value="2" />
+				<input type="radio" name="mood" value="4" />
 				<label for="radio102">Happiest</label>
 			</div>
 		</p>
@@ -158,22 +158,38 @@ if ($_POST['query'] != 0){
 		
 	}	
 	if($_POST['query'] == '5'){
-		$reg = strlen ($_POST['regex']) > 0 ? $_POST['regex'] : '' ;
-		$mood = $_POST['mood'] == 2 ? -1 : 1 ;
+		$reg = strlen ($_POST['regex']) > 0 ? $_POST['regex'] : -1 ;
+		$mood = $_POST['mood'] == 4 ? -1 : 1 ;
 		$emotion = $mood == -1 ? 'happiest' : 'negative' ;
 		echo "<h5>5. Who are the five most $emotion</h5>";
 
+		if($reg == -1){
+
+			$command = new MongoDB\Driver\Command([
+				'aggregate' => 'tweets',
+				'pipeline' => [
+					['$match' => ['polarity' => intval($_POST['mood'])]],
+					['$group' => ['_id' => '$user', 'emotion' => ['$avg' => '$polarity'], 'total' => ['$sum' => 1]]],
+					['$sort' => ['emotion' => $mood, 'total' => -1]],
+					['$limit' => 5],
+				],
+				'cursor' => new stdClass,
+			]);	
+		}
+		else{	
 		echo "<h3>$reg</h3>";
-		$command = new MongoDB\Driver\Command([
-			'aggregate' => 'tweets',
-			'pipeline' => [
-				['$match' => ['text' => ['$regex' => $reg, '$options' => 'g']]],
-				['$group' => ['_id' => '$user', 'emotion' => ['$avg' => '$polarity'], 'total' => ['$sum' => 1]]],
-				['$sort' => ['emotion' => $mood, 'total' => -1]],
-				['$limit' => 5],
-			],
-			'cursor' => new stdClass,
-		]);	
+		
+			$command = new MongoDB\Driver\Command([
+				'aggregate' => 'tweets',
+				'pipeline' => [
+					['$match' => ['text' => ['$regex' => $reg, '$options' => 'g']]],
+					['$group' => ['_id' => '$user', 'emotion' => ['$avg' => '$polarity'], 'total' => ['$sum' => 1]]],
+					['$sort' => ['emotion' => $mood, 'total' => -1]],
+					['$limit' => 5],
+				],
+				'cursor' => new stdClass,
+			]);	
+		}
 		
 		
 	}
@@ -219,7 +235,11 @@ if ($_POST['query'] != 0){
 
 
 <?php }?>
+
 </div>
 	</div>
+	</br>
+</br>
+</br>
 	</body>
 </html>
