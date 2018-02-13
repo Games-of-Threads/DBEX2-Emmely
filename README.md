@@ -1,5 +1,4 @@
-# DBEX2-Emmely
-Emmely Lundberg cph-el69
+# Database exercise 2 (MongoDB)
 
 I have created a small Database Application in a PHP file called index.php. 
 
@@ -134,3 +133,5 @@ I have set up a Digital Ocean Ubuntu machine 1GB by following the guide above.
 
 [![https://gyazo.com/1bfd52f80ca7dafa36cd669de4c6cd67](https://i.gyazo.com/1bfd52f80ca7dafa36cd669de4c6cd67.png)](https://gyazo.com/1bfd52f80ca7dafa36cd669de4c6cd67)
 
+--------
+Implemented by Emmely Lundberg cph-el69
